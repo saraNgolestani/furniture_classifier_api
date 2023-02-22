@@ -1,0 +1,23 @@
+.env
+venv
+*.png
+dataset/*
+__pycache__/
+lib/
+lib64/
+
+.ipynb_checkpoints
+
+# PyTorch files
+*.pth
+*.pt
+
+# Flask files
+instance/
+*.pyc
+*.pyo
+.webassets-cache
+
+
+# IDE files
+.idea/
