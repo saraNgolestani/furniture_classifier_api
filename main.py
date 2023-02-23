@@ -17,14 +17,14 @@ def parse_args():
     parser = argparse.ArgumentParser()
     add_arg = parser.add_argument
 
-    add_arg('--data_path', default="./dataset/furniture_dataset", help='path to the image folders directory')
+    add_arg('--data_path', default="./dataset/furniture_dataset", type=str, help='path to the image folders directory')
     add_arg('--lr', default=1e-4, type=float, help="learning rate")
     add_arg('--batch_size', default=8, type=int, help="batch size for test, train, and validation")
     add_arg('--num_epoch', default=5, type=int, help="number of epoch for training step")
-    add_arg('--mode', default='train', choices=['train', 'test', 'serve'], help="decides which process to starts")
-    add_arg('--model_path', default=None, help='path to the trained model directory')
-    add_arg('--save_path', default="./output/model", help='path to save the trained model')
-    add_arg('--upload_directory', default="./output/upload_directory", help='path to save the uploaded images')
+    add_arg('--mode', default='train', type=str, choices=['train', 'test', 'serve'], help="decides which process to starts")
+    add_arg('--model_path', default=None, type=str, help='path to the trained model directory')
+    add_arg('--save_path', default="./output/model", type=str, help='path to save the trained model')
+    add_arg('--upload_directory', default="./output/upload_directory", type=str, help='path to save the uploaded images')
     add_arg('--port', default='8080', type=str, help="default port for serving API")
 
     return parser.parse_args()
@@ -52,7 +52,7 @@ def train(train_loader, valid_loader, model, num_epoch):
             if i % 10 == 9:  # Print every 10 mini-batches
                 print('[Epoch %d, Batch %d] Loss: %.3f' % (epoch + 1, i + 1, running_loss / 10))
                 running_loss = 0.0
-
+        # Check the validation set accuracy every epoch to avoid overfiting
         val_acc, val_loss = validation(valid_loader, model=model)
         print('[Epoch %d] Validation Loss: %.3f \t Validation Accuracy: %.3f' % (epoch + 1, val_loss, val_acc))
 
