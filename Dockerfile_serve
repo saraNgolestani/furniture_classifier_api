@@ -1,9 +1,10 @@
-FROM python:3.9-slim-buster
+FROM saragln97/furniture_classifier_base:latest
 
 WORKDIR /python-docker
 
 COPY . .
 
 RUN pip3 install -r requirements.txt
-
-CMD [ "python3", "main.py" , "--mode", "train", '--data_path', './dataset/furniture_dataset']
+RUN python3 main.py --mode train --data_path ./dataset/furniture_dataset --save_path ./output/model/
+EXPOSE 8080
+CMD [ "python3", "main.py" , "--mode", "serve", '--model_path', './output/model/checkpoint.ckp']
