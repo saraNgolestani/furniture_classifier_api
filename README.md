@@ -22,11 +22,11 @@ This project is an example of how to build a REST API for image classification u
 
 ### Model training
 
-1. run the training command: `python main.py --mode 'train'`
+1. run the training command: `python main.py --mode train --save_path [PATH]`
 
 ### Model testing
 
-1. run the training command: `python main.py --mode 'test' --model_path 'path/to/the/checkpoint'`
+1. run the training command: `python main.py --mode test --model_path [PATH]`
 
 ### Usage
 1. Start the Flask app:
