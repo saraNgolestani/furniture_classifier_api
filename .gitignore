@@ -3,6 +3,8 @@ venv
 *.png
 dataset/*
 !dataset/.gitkeep
+output/*
+!output/.gitkeep
 __pycache__/
 lib/
 lib64/
